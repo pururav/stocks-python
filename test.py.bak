@@ -1,0 +1,22 @@
+#!/usr/bin/python
+
+#import enable
+#from enable.api import Component, ComponentEditor
+
+import mysql.connector
+
+cnx = mysql.connector.connect(user='root', password='sakshi', host='localhost', database='test')
+print "Opened MySQL connection"
+cursor = cnx.cursor()
+cursor.execute("SELECT * FROM stockprices")
+print "Associated cursor"
+data = cursor.fetchone();
+while data is not None:
+  print data
+  data = cursor.fetchone();
+
+print "Closing MySQL connection"
+cnx.close()
+
+print "Hello Python";
+
